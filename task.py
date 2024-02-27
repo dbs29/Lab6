@@ -12,6 +12,12 @@ class Task(object):
         self.df = pd.read_csv(data)
 
     def t1(self, name):
+        sim_weights = {}
+        for user in df.columns[1:-1]:
+            df_subset = df[['Frank',user]][df['Frank'].notnull() & df[user].notnull()]
+            sim_weights[user] = pearsonr(df_subset['Frank'], df_subset[user])[0]
+        print ("similarity weights: %s" % sim_weights)
+
         predicted_rating = 0.0
         weights_sum = 0.0
         ratings = self.df.iloc[0][1:-1]
