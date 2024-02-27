@@ -24,6 +24,16 @@ if __name__ == "__main__":
     # using the class movie ratings data we collected in http://data.cs1656.org/movie_class_responses.csv
     t = Task('http://data.cs1656.org/movie_class_responses.csv')
     print(t.t1('BabyKangaroo'))
+    predicted_rating = 0.0
+weights_sum = 0.0
+ratings = df.iloc[0][1:-1]
+for user in df.columns[1:-1]:
+    if (not np.isnan(sim_weights[user])):
+        predicted_rating += ratings[user] * sim_weights[user]
+        weights_sum += sim_weights[user]
+
+predicted_rating /= weights_sum
+print ("predicted rating: %f" % predicted_rating)
     print('------------------------------------')
     print(t.t2('BabyKangaroo'))
     print('------------------------------------')
