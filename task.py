@@ -14,8 +14,8 @@ class Task(object):
     def t1(self, name):
         predicted_rating = 0.0
         weights_sum = 0.0
-        ratings = df.iloc[0][1:-1]
-        for user in df.columns[1:-1]:
+        ratings = self.df.iloc[0][1:-1]
+        for user in self.df.columns[1:-1]:
             if (not np.isnan(sim_weights[user])):
                 predicted_rating += ratings[user] * sim_weights[user]
                 weights_sum += sim_weights[user]
