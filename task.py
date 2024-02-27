@@ -14,8 +14,8 @@ class Task(object):
     def t1(self, name):
         sim_weights = {}
         for user in self.df.columns[1:-1]:
-            df_subset = self.df[['Frank',user]][df['Frank'].notnull() & self.df[user].notnull()]
-            sim_weights[user] = pearsonr(df_subset['Frank'], df_subset[user])[0]
+            df_subset = self.df[['BabyKangaroo',user]][df['BabyKangaroo'].notnull() & self.df[user].notnull()]
+            sim_weights[user] = pearsonr(df_subset['BabyKangaroo'], df_subset[user])[0]
         print ("similarity weights: %s" % sim_weights)
 
         predicted_rating = 0.0
